@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import APOD from "./components/APOD";
 import MarsPhotos from "./components/MarsPhotos";
 import Navbar from "./components/Navbar";
-import FloatingStars from "./components/FlotingStarts";
+import FloatingStars from "./components/FlotingStars";
 import Footer from "./components/Footer";
 
 function AnimatedRoutes() {

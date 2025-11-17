@@ -5,7 +5,7 @@ import PlanetCards from "./PlanetCards";
 import AstronautLoader from "./AstronautLoader";
 import { motion } from "framer-motion";
 import ScrollTop from "./ScrollTop";
-import FloatingStars from "./FlotingStarts";
+import FloatingStars from "./FlotingStars";
 
 const APOD = () => {
   const [data, setData] = useState(null);
