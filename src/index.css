@@ -1,2 +1,71 @@
 @import "tailwindcss";
 @tailwind utilities;
+
+/* --- cosmic background and stars --- */
+:root{
+  --cosmic-1: #0f172a; /* bg-gray-900-ish */
+  --cosmic-2: #0b1220;
+  --cosmic-3: #081028;
+}
+
+/* full-page cosmic gradient */
+.cosmic-bg {
+  background: radial-gradient(ellipse at 10% 10%, rgba(99,102,241,0.08) 0%, transparent 20%),
+              radial-gradient(ellipse at 90% 80%, rgba(59,130,246,0.06) 0%, transparent 15%),
+              linear-gradient(180deg, var(--cosmic-1) 0%, var(--cosmic-2) 50%, var(--cosmic-3) 100%);
+  background-attachment: fixed;
+}
+
+/* moving tiny stars (low cost) */
+.stars {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  opacity: 0.9;
+  animation: twinkle linear infinite;
+  transform: translate3d(0,0,0);
+}
+
+@keyframes twinkle {
+  0% { transform: translateY(0) scale(1); opacity: 0.6; }
+  50% { transform: translateY(-6px) scale(1.1); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 0.6; }
+}
+
+/* astronaut loader */
+.astronaut-loader {
+  width: 120px;
+  height: 120px;
+  display: inline-block;
+  animation: floaty 3s ease-in-out infinite;
+}
+@keyframes floaty {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px) rotate(-2deg); }
+}
+
+/* glass navbar */
+.glass-nav {
+  backdrop-filter: blur(8px);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* neon glow border utility */
+.neon-border {
+  box-shadow: 0 0 30px rgba(59,130,246,0.08);
+  border: 1px solid rgba(59,130,246,0.15);
+}
+
+/* small responsive adjustments */
+@media (max-width: 640px){
+  .hero-title { font-size: 1.6rem; }
+}

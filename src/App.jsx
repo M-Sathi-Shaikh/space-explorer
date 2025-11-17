@@ -1,20 +1,36 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import APOD from "./components/APOD";
 import MarsPhotos from "./components/MarsPhotos";
+import Navbar from "./components/Navbar";
+import FloatingStars from "./components/FlotingStarts";
+import Footer from "./components/Footer";
+
+function AnimatedRoutes() {
+  const location = useLocation();
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<APOD />} />
+        <Route path="/mars" element={<MarsPhotos />} />
+      </Routes>
+    </AnimatePresence>
+  );
+}
 
 const App = () => {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-900 text-white">
-        <nav className="p-5 bg-gray-800 flex justify-center space-x-4">
-          <Link className="text-lg font-bold" to="/">APOD</Link>
-          <Link className="text-lg font-bold" to="/mars">Mars Photos</Link>
-        </nav>
+      <div className="min-h-screen text-white flex flex-col relative cosmic-bg">
+        <FloatingStars count={28} />
+        
+        <Navbar />
 
-        <Routes>
-          <Route path="/" element={<APOD />} />
-          <Route path="/mars" element={<MarsPhotos />} />
-        </Routes>
+        <main className="flex-grow">
+          <AnimatedRoutes />
+        </main>
+
+        <Footer />
       </div>
     </Router>
   );
